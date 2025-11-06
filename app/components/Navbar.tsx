@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Theme Initialization
+  // Initialize theme
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -46,17 +46,9 @@ export default function Navbar() {
     open: { opacity: 1, y: 0 },
   };
 
-  const handleScroll = (href: string) => {
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      setMenuOpen(false);
-    }
-  };
-
   return (
-    <header className="fixed w-full z-50 backdrop-blur-md transition-colors duration-500 shadow-md">
-      <div className={`container mx-auto max-w-5xl flex justify-between items-center py-4 px-6 rounded-b-lg ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <header className="fixed w-full z-50 backdrop-blur-md transition-colors duration-500">
+      <div className={`container mx-auto max-w-5xl  flex justify-between items-center py-4 px-6 rounded-b-lg shadow-lg ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
         {/* Logo */}
         <motion.div
           initial={{ y: -5, opacity: 0 }}
@@ -69,23 +61,14 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center space-x-8 text-lg font-medium">
           {links.map(link => (
-            <motion.div
-              key={link.href}
-              whileHover={{ y: -3, scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <button
-                onClick={() => handleScroll(link.href)}
-                className="relative group transition-colors duration-300 font-medium"
-              >
-                {link.label}
+            <motion.div key={link.href} whileHover={{ y: -2, scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <Link href={link.href} className="relative group transition-colors duration-300">{link.label}
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-teal-400 rounded transition-all duration-300 group-hover:w-full"></span>
-              </button>
+              </Link>
             </motion.div>
           ))}
 
-          {/* Theme Toggle */}
+          {/* Animated Circular Slider Toggle */}
           <div
             onClick={toggleTheme}
             className={`w-14 h-7 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-500 ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}
@@ -100,7 +83,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile Menu & Theme Toggle */}
+        {/* Mobile menu toggle */}
         <div className="md:hidden flex items-center gap-4">
           <div
             onClick={toggleTheme}
@@ -136,9 +119,7 @@ export default function Navbar() {
             <motion.ul className="flex flex-col items-center space-y-4 py-6 text-lg font-medium">
               {links.map(link => (
                 <motion.li key={link.href} variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button onClick={() => handleScroll(link.href)} className="transition-colors duration-300">
-                    {link.label}
-                  </button>
+                  <Link href={link.href} className="transition-colors duration-300" onClick={() => setMenuOpen(false)}>{link.label}</Link>
                 </motion.li>
               ))}
             </motion.ul>

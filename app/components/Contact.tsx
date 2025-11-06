@@ -1,11 +1,16 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Contact() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-50, 50], [10, -10]);
+  const rotateY = useTransform(x, [-50, 50], [-10, 10]);
+
   return (
     <section
       id="contact"
@@ -22,7 +27,6 @@ export default function Contact() {
           Get In Touch
         </motion.h2>
 
-        {/* 2-Column Layout */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16">
           {/* Left: Contact Information */}
           <motion.div
@@ -52,66 +56,71 @@ export default function Contact() {
 
             {/* Social Links */}
             <div className="flex gap-5 mt-6 text-2xl">
-              <Link
-                href="https://github.com/bulbul64"
-                target="_blank"
-                className="hover:text-teal-400 transition-colors"
-              >
+              <Link href="https://github.com/bulbul64" target="_blank" className="hover:text-teal-400 transition-colors">
                 <FaGithub />
               </Link>
-              <Link
-                href="https://www.linkedin.com/in/shafiulla-bulbul/"
-                target="_blank"
-                className="hover:text-teal-400 transition-colors"
-              >
+              <Link href="https://www.linkedin.com/in/shafiulla-bulbul/" target="_blank" className="hover:text-teal-400 transition-colors">
                 <FaLinkedin />
               </Link>
-              <Link
-                href="https://twitter.com/yourusername"
-                target="_blank"
-                className="hover:text-teal-400 transition-colors"
-              >
+              <Link href="https://twitter.com/yourusername" target="_blank" className="hover:text-teal-400 transition-colors">
                 <FaTwitter />
               </Link>
             </div>
           </motion.div>
 
-          {/* Right: Contact Form */}
-          <motion.form
-            className="flex flex-col gap-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert('Form submitted! (Backend integration coming soon)');
+          {/* Right: Contact Form with 3D Tilt */}
+          <motion.div
+            className="perspective-[1000px]"
+            onMouseMove={(e) => {
+              const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+              const px = e.clientX - rect.left - rect.width / 2;
+              const py = e.clientY - rect.top - rect.height / 2;
+              x.set(px);
+              y.set(py);
+            }}
+            onMouseLeave={() => {
+              x.set(0);
+              y.set(0);
             }}
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
-              required
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={5}
-              className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 text-white hover:from-pink-400 hover:via-purple-500 hover:to-teal-400 transition-all duration-500"
+            <motion.form
+              className="flex flex-col gap-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8"
+              style={{ rotateX, rotateY }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert('Form submitted! (Backend integration coming soon)');
+              }}
             >
-              Send Message
-            </Button>
-          </motion.form>
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
+                required
+              />
+              <textarea
+                placeholder="Your Message"
+                rows={5}
+                className="w-full p-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
+                required
+              />
+              <Button
+                type="submit"
+                className="w-full bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 text-white hover:from-pink-400 hover:via-purple-500 hover:to-teal-400 transition-all duration-500"
+              >
+                Send Message
+              </Button>
+            </motion.form>
+          </motion.div>
         </div>
       </div>
     </section>
