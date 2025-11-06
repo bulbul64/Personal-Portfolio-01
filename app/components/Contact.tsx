@@ -61,10 +61,10 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">
+          <Link href="https://github.com/bulbul64" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">
             <FaGithub />
           </Link>
-          <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">
+          <Link href="https://www.linkedin.com/in/shafiulla-bulbul/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">
             <FaLinkedin />
           </Link>
           <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">
