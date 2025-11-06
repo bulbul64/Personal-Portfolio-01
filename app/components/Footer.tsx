@@ -3,7 +3,7 @@
 export default function Footer() {
   return (
     <footer className="py-6 border-t border-gray-300 dark:border-gray-700 text-center dark:bg-gray-900 transition-colors">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="container mx-auto max-w-5xl px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         
         {/* Left: Copyright */}
         <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">

@@ -24,7 +24,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-20 dark:bg-gray-900 transition-colors">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto max-w-5xl px-6">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12"
           initial={{ opacity: 0, y: -20 }}

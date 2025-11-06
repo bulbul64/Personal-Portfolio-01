@@ -20,8 +20,8 @@ export default function Hero() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="relative py-20 dark:bg-gray-900 transition-colors">
-      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-6">
+    <section className="relative py-25 dark:bg-gray-900 transition-colors">
+      <div className="container mx-auto max-w-5xl flex flex-col-reverse md:flex-row items-center justify-between gap-10 px-6">
         
         {/* Left Column */}
         <div className="md:w-1/2 text-center md:text-left space-y-5">
@@ -66,7 +66,7 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Image */}
-        <div className="md:w-1/2 flex justify-center md:justify-end">
+        <div className="md:w-1/2 flex justify-center  md:justify-end">
           <motion.div
             whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
             animate={{ y: [0, -10, 0, 10, 0] }}
@@ -78,7 +78,7 @@ export default function Hero() {
               alt="Profile photo"
               width={350}
               height={350}
-              className="object-cover"
+              className="object-cover w-[340px] h-[400px]"
               priority
             />
           </motion.div>

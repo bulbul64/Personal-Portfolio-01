@@ -21,10 +21,10 @@ export default function About() {
       
       {/* Floating Gradient Backgrounds */}
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-linear-to-r  opacity-20 rounded-full animate-blob mix-blend-multiply filter blur-3xl -z-10"></div>
-      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-linear-to-r from-pink-400 opacity-20 rounded-full animate-blob animation-delay-2000 mix-blend-multiply filter blur-3xl -z-10"></div>
+      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-linear-to-r  opacity-20 rounded-full animate-blob animation-delay-2000 mix-blend-multiply filter blur-3xl -z-10"></div>
 
       <motion.div
-        className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-6"
+        className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center gap-10 px-6"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
