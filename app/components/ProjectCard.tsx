@@ -1,12 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const projects = [
   {
     title: "Portfolio Website",
     description: "A modern, responsive portfolio website built with Next.js and Tailwind CSS.",
-    link: "#",
+    link: "https://personal-portfolio-jade-xi-66.vercel.app/",
   },
   {
     title: "E-commerce App",
@@ -46,12 +47,12 @@ export default function Projects() {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{project.description}</p>
               </div>
-              <a
+              <Link
                 href={project.link}
                 className="mt-4 inline-block text-teal-400 hover:text-teal-500 font-semibold transition-colors"
               >
                 View Project →
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>
