@@ -44,14 +44,14 @@ export default function Hero() {
                 My Projects
               </Button>
             </Link>
-            <Link href="/resume.pdf" target="_blank" download>
+            <Link href="https://drive.google.com/drive/folders/1PsW5zdUrCcgQ6UcdcwQvklDmzpRoFINh" target="_blank" >
               <Button
                 className="relative overflow-hidden px-6 py-2 border-2 border-teal-400 text-teal-400 font-semibold rounded-lg shadow-md transition-all duration-300 hover:text-white hover:border-transparent"
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
               >
                 <span className={`absolute inset-0 bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 transform -translate-x-full hover:translate-x-0 transition-transform duration-500 ease-out`}></span>
-                <span className="relative z-10">{hovered ? "Download" : "Resume"}</span>
+                <span className="relative z-10">{hovered ? "Check Resume" : "Resume"}</span>
               </Button>
             </Link>
           </div>
