@@ -14,15 +14,21 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-20 transition-colors bg-gray-50 dark:bg-gray-900"
+      className="relative py-24 transition-colors bg-gray-50 dark:bg-gray-900 overflow-hidden"
     >
-      <div className="container mx-auto max-w-5xl px-8">
-        {/* Section Title */}
+      {/* Optional Floating Blobs for consistency */}
+      <motion.div
+        className="absolute -top-32 left-1/4 w-[400px] h-[400px] rounded-full bg-linear-to-r from-teal-300 via-purple-400 to-pink-400 opacity-20 blur-3xl animate-blob mix-blend-multiply -z-10"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="container mx-auto max-w-6xl px-6 relative z-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-14"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }} 
+          transition={{ duration: 0.6 }}
         >
           Get In Touch
         </motion.h2>
@@ -30,15 +36,14 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16">
           {/* Left: Contact Information */}
           <motion.div
-            className="flex flex-col justify-center gap-5 text-gray-800 dark:text-gray-200 mb-15"
+            className="flex flex-col justify-center gap-5 text-gray-800 dark:text-gray-200"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-semibold mb-2">Contact Information</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              I’m always open to discussing new projects, creative ideas, or
-              opportunities to be part of your vision.
+              I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
 
             <div className="flex items-center gap-3">
@@ -84,7 +89,7 @@ export default function Contact() {
             }}
           >
             <motion.form
-              className="flex flex-col gap-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8"
+              className="flex flex-col gap-4 bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-6 md:p-8"
               style={{ rotateX, rotateY }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               initial={{ opacity: 0 }}

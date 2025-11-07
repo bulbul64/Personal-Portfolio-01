@@ -1,3 +1,4 @@
+// app/components/About.tsx
 'use client';
 
 import Image from 'next/image';
@@ -18,13 +19,21 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative py-20 dark:bg-gray-900 transition-colors overflow-hidden">
+    <section id="about" className="relative py-24 dark:bg-gray-900 overflow-hidden transition-colors">
       
-      {/* Floating Gradient Backgrounds */}
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-linear-to-r opacity-20 rounded-full animate-blob mix-blend-multiply filter blur-3xl -z-10"></div>
-      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-linear-to-r opacity-20 rounded-full animate-blob animation-delay-2000 mix-blend-multiply filter blur-3xl -z-10"></div>
+      {/* Floating Rainbow Blobs */}
+      <motion.div
+        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 opacity-20 blur-3xl animate-blob mix-blend-multiply -z-10"
+        animate={{ y: [0, 40, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-linear-to-r from-pink-400 via-purple-500 to-teal-400 opacity-20 blur-3xl animate-blob mix-blend-multiply -z-10"
+        animate={{ y: [0, -40, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
-      <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center gap-10 px-6">
+      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-10 px-6 relative z-10">
         
         {/* Image with 3D Tilt */}
         <motion.div
@@ -71,12 +80,12 @@ export default function About() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-2 w-full justify-center">
                 <Link href="#projects">
-                  <Button className="bg-teal-400 text-white hover:bg-teal-500 w-full sm:w-auto">
+                  <Button className="bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 text-white w-full sm:w-auto">
                     My Projects
                   </Button>
                 </Link>
                 <Link href="#contact">
-                  <Button variant="outline" className="border border-white  hover:bg-teal-400 hover:text-white text-black w-full sm:w-auto">
+                  <Button variant="outline" className="border border-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-400 hover:text-white w-full sm:w-auto">
                     Contact Me
                   </Button>
                 </Link>
@@ -91,23 +100,11 @@ export default function About() {
             About Me
           </motion.h2>
           <motion.p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            I’m <span className="font-semibold text-teal-400">Shafiullah Bulbul</span>, a passionate Full Stack Developer building responsive, interactive web apps using <span className="font-semibold text-gray-900 dark:text-white">Next.js, Tailwind CSS</span> and <span className="font-semibold text-gray-900 dark:text-white">Shadcn/UI</span>.
+            I’m <span className="font-semibold text-gradient bg-clip-text text-transparent bg-linear-to-r from-teal-400 via-purple-500 to-pink-400">Shafiullah Bulbul</span>, a passionate Full Stack Developer building responsive, interactive web apps using <span className="font-semibold text-gray-900 dark:text-white">Next.js, Tailwind CSS</span> and <span className="font-semibold text-gray-900 dark:text-white">Shadcn/UI</span>.
           </motion.p>
           <motion.p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
             I focus on building scalable, maintainable web apps and exploring creative solutions to real-world problems.
           </motion.p>
-          <motion.div className="flex justify-center md:justify-start gap-4 mt-4">
-            <Link href="#projects">
-              <Button className="bg-linear-to-r from-teal-400 via-purple-500 to-pink-400 text-white hover:from-pink-400 hover:via-purple-500 hover:to-teal-400 transition-all duration-500">
-                My Projects
-              </Button>
-            </Link>
-            <Link href="#contact">
-              <Button variant="outline" className="border border-teal-400 text-teal-400 hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-400 hover:text-white transition-all duration-500">
-                Contact Me
-              </Button>
-            </Link>
-          </motion.div>
         </motion.div>
       </div>
     </section>
