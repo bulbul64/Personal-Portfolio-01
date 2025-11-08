@@ -25,7 +25,7 @@ const projects: Project[] = [
   {
     title: 'E-commerce App',
     description: 'A full-stack e-commerce web app with cart, checkout, and user auth.',
-    image: '/project2.jpg',
+    image: '/book.png',
     demo: '#',
     github: '#',
   },
