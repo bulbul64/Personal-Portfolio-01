@@ -18,9 +18,9 @@ const projects: Project[] = [
   {
     title: 'Portfolio Website',
     description: 'A modern responsive portfolio built with Next.js, Tailwind CSS & Shadcn/UI.',
-    image: '/project1.jpg',
-    demo: '#',
-    github: '#',
+    image: '/p.png',
+    demo: 'https://personal-portfolio-wc76.vercel.app/',
+    github: 'https://github.com/bulbul64/Personal-Portfolio',
   },
   {
     title: 'E-commerce App',
@@ -32,7 +32,7 @@ const projects: Project[] = [
   {
     title: 'Blog Platform',
     description: 'Dynamic blog platform with markdown support and comment system.',
-    image: '/project3.jpg',
+    image: '/blog.png',
     demo: '#',
     github: '#',
   },

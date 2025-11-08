@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react'; // ✅ নতুন আইকন ইমপোর্ট
 
 const links = [
   { href: '#hero', label: 'Home' },
@@ -14,7 +15,6 @@ const links = [
 ];
 
 export default function Navbar() {
-  // lazy initial state avoids SSR mismatch and immediate setState
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === 'undefined') return false;
     const storedTheme = localStorage.getItem('theme');
@@ -24,7 +24,6 @@ export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Apply theme to <html> safely on client
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -81,10 +80,9 @@ export default function Navbar() {
             </motion.div>
           </div>
 
-          <Button onClick={() => setMenuOpen(!menuOpen)} className="relative w-8 h-8 flex flex-col justify-center items-center gap-1">
-            <motion.span animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 8 : 0 }} className="block w-full h-0.5 bg-current rounded-full" />
-            <motion.span animate={{ opacity: menuOpen ? 0 : 1 }} className="block w-full h-0.5 bg-current rounded-full" />
-            <motion.span animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -8 : 0 }} className="block w-full h-0.5 bg-current rounded-full" />
+          {/* ✅ এখানে আইকন অ্যাড করা হলো */}
+          <Button onClick={() => setMenuOpen(!menuOpen)} variant="ghost" size="icon" className="p-2">
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </Button>
         </div>
       </div>
